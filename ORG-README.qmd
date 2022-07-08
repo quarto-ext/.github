@@ -2,6 +2,9 @@
 output-file: profile/README.md
 format: gfm
 wrap: preserve
+execute: 
+  echo: false
+  warning: false
 ---
 
 # Extensions for Quarto
@@ -11,9 +14,7 @@ Welcome in `quarto-ext` organization that will regroup extensions to use with Qu
 Take a look at the available extensions in the table below :eyes: 
 
 ```{r}
-#| echo: false
 #| message: false
-#| warning: false
 
 library(gh)
 library(purrr)
