@@ -1,0 +1,47 @@
+---
+output-file: profile/README.md
+format: gfm
+wrap: preserve
+---
+
+# Extensions for Quarto
+
+Welcome in `quarto-ext` organization that will regroup extensions to use with Quarto (https://quarto.org/)
+
+Take a look at the available extensions in the table below :eyes: 
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| tbl-colwidths: [10, 25, 50, 15]
+
+library(gh)
+library(purrr)
+library(dplyr)
+
+res <- gh::gh("/orgs/{org}/repos", org = "quarto-ext") 
+
+tab <- res |> 
+    # remove non extension
+    discard(~ .x$name %in% c(".github")) |>
+    # remove private
+    discard(~ .x$private) |>
+    map_df(~ tibble::tibble(
+        name = .x$name,
+        full_name = .x$full_name,
+        description = .x$description,
+        license = .x$license$name,
+        url = .x$html_url
+    ))
+
+tab_formatted <- tab |>
+    transmute(
+        'Extension name' = glue::glue("[{name}]({url})"),
+        'Description' = description,
+        'Install' = glue::glue("`quarto install extension {full_name}`"),
+        'License' = license
+    )
+
+knitr::kable(tab_formatted)
+```
