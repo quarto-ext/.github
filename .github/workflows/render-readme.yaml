@@ -36,7 +36,7 @@ jobs:
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
         with:
-          path: README.qmd
+          path: ORG-README.qmd
       
       - name: Commit Results
         run: |

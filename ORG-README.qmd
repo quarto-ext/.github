@@ -14,7 +14,6 @@ Take a look at the available extensions in the table below :eyes:
 #| echo: false
 #| message: false
 #| warning: false
-#| tbl-colwidths: [10, 25, 50, 15]
 
 library(gh)
 library(purrr)
