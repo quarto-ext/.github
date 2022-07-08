@@ -35,6 +35,7 @@ tab <- res |>
     ))
 
 tab_formatted <- tab |>
+    arrange(name) |>
     transmute(
         'Extension name' = glue::glue("[{name}]({url})"),
         'Description' = description,
