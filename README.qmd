@@ -39,8 +39,7 @@ tab_formatted <- tab |>
     transmute(
         'Extension name' = glue::glue("[{name}]({url})"),
         'Description' = description,
-        'Install' = glue::glue("`quarto install extension {full_name}`"),
-        'License' = license
+        'Install' = glue::glue("`quarto install extension {full_name}`")
     )
 
 knitr::kable(tab_formatted)
