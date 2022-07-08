@@ -4,6 +4,8 @@ on:
   push:
     paths: ['ORG-README.qmd']
   workflow_dispatch:
+  schedule: 
+    - '37 5 * * *'
 
 name: render-readme
 
