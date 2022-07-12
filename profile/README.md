@@ -1,9 +1,9 @@
 
 # Extensions for Quarto
 
-Welcome in `quarto-ext` organization that will regroup extensions to use with Quarto (https://quarto.org/)
+The `quarto-ext` organization collects extensions maintained by the core Quarto team.
 
-Take a look at the available extensions in the table below :eyes:
+Learn more about creating your own extensions here: <https://quarto.org/docs/extensions/>
 
 | Extension name                                                       | Description                                                                                     | Install                                                 |
 |:---------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
