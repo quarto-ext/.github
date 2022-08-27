@@ -24,7 +24,7 @@ res <- gh::gh("/orgs/{org}/repos", org = "quarto-ext")
 
 tab <- res |> 
     # remove non extension
-    discard(~ .x$name %in% c(".github")) |>
+    discard(~ .x$name %in% c(".github", "code-filename", "grouped-tabsets")) |>
     # remove private
     discard(~ .x$private) |>
     map_df(~ tibble::tibble(
