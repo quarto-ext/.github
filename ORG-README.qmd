@@ -47,7 +47,7 @@ order <- tibble(name = c(
 
 tab_formatted <- tab |>
     left_join(order, by = "name") |>
-    arrange(order) |>
+    arrange(order, name) |>
     transmute(
         'Extension name' = glue::glue("[{name}]({url})"),
         'Description' = description,
