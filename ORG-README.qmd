@@ -35,8 +35,19 @@ tab <- res |>
         url = .x$html_url
     ))
 
+order <- tibble(name = c(
+    "latex-environment",
+    "lightbox",
+    "fontawesome",
+    "video", 
+    "pointer", 
+    "shinylive", 
+    "fancy-text")
+) |> mutate(order = row_number())
+
 tab_formatted <- tab |>
-    arrange(name) |>
+    left_join(order, by = "name") |>
+    arrange(order) |>
     transmute(
         'Extension name' = glue::glue("[{name}]({url})"),
         'Description' = description,
