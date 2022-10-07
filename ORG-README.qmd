@@ -41,6 +41,7 @@ order <- tibble(name = c(
     "fontawesome",
     "video", 
     "pointer", 
+    "attribution",
     "shinylive", 
     "fancy-text")
 ) |> mutate(order = row_number())
