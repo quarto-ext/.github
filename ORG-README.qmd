@@ -1,5 +1,4 @@
 ---
-output-file: profile/README.md
 format: gfm
 wrap: preserve
 execute: 
@@ -11,7 +10,7 @@ execute:
 
 The `quarto-ext` organization collects extensions maintained by the core Quarto team. 
 
-Learn more about creating your own extensions here: <https://quarto.org/docs/extensions/>
+Learn more about creating your extensions here: <https://quarto.org/docs/extensions/>
 
 ```{r}
 #| message: false
@@ -25,6 +24,10 @@ res <- gh::gh("/orgs/{org}/repos", org = "quarto-ext")
 tab <- res |> 
     # remove non extension
     discard(~ .x$name %in% c(".github")) |>
+    # don't include manuscript template
+    discard(~ grepl("manuscript-template-", .x$name)) |>
+    # don't list typst template as this is a repo of templates
+    discard(~ grepl("typst-template", .x$name)) |>
     # remove private
     discard(~ .x$private) |>
     map_df(~ tibble::tibble(
@@ -51,7 +54,7 @@ tab_formatted <- tab |>
     transmute(
         'Extension name' = glue::glue("[{name}]({url})"),
         'Description' = description,
-        'Install' = glue::glue("`quarto install extension {full_name}`")
+        'Install' = glue::glue("`quarto add extension {full_name}`")
     )
 
 knitr::kable(tab_formatted)

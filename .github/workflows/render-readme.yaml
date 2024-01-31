@@ -38,8 +38,6 @@ jobs:
 
       - name: Render with Quarto
         uses: quarto-dev/quarto-actions/render@v2
-        with:
-          path: ORG-README.qmd
       
       - name: Commit Results
         run: |

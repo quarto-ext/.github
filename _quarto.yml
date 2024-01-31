@@ -1,0 +1,6 @@
+project: 
+  type: default
+  post-render: 
+    - move-file.R
+  render: 
+    - ORG-README.qmd
